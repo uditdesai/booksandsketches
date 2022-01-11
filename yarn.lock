@@ -246,6 +246,11 @@
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.1.0.tgz#7f698254aadf921e48dda8c0a6b304026b8a9323"
   integrity sha512-JLo+Y592QzIE+q7Dl2pMUtt4q8SKYI5jDrZxrozEQxnGVOyYE+GWK9eLkwTaeN9DDctlaRAQ3TBmzZ1qdLE30A==
 
+"@sanity/cli@^2.24.0":
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/@sanity/cli/-/cli-2.24.0.tgz#98463f1df29a5210fbdceb39a6a43f0b7eb9ee8b"
+  integrity sha512-jJbUgkW+Fivnj9AHjNoYOnRimJUg95DcNbkvUDMnpR2JCc8tie7dQFTpZqLhVpn3atiMWcfBVruNEph97KRarQ==
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
