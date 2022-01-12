@@ -1,20 +1,35 @@
-/* eslint-disable import/no-anonymous-default-export */
-import { FetchBookArgs } from './types';
+import groq from "groq";
 
-export default {
-  book: ({ slug }: FetchBookArgs) => {
-    let groq = `{
-    _id,
-    title,
-    author,
-    thoughts,
-    sketchIdea,
-    isFiction,
-    sketch->,
-    seo->,
-    slug,
-    }`;
+export const bookSlugsQuery = groq`
+*[_type == "book"] | order(_createdAt desc) {
+  slug
+}
+`;
 
-    return `*[_type == 'book' && slug.current == '${slug}'][0]${groq}`;
-  },
-};
+export const bookQuery = (slug: string) => groq`
+*[_type == 'book' && slug.current == '${slug}'][0]{
+  _id,
+  title,
+  author,
+  thoughts,
+  sketchIdea,
+  isFiction,
+  sketch,
+  seo,
+  slug,
+  }
+`;
+
+export const booksQuery = groq`
+*[_type == 'book']{
+  _id,
+  title,
+  author,
+  thoughts,
+  sketchIdea,
+  isFiction,
+  sketch,
+  seo,
+  slug,
+  }
+`;
