@@ -1,9 +1,17 @@
 /* eslint-disable import/no-anonymous-default-export */
+import { validateSlug } from "../utils/validateSlug";
+
 export default {
   name: "book",
   title: "Book",
   type: "document",
   fields: [
+    {
+      name: "slug",
+      type: "slug",
+      options: { source: "title" },
+      validation: validateSlug,
+    },
     {
       name: "title",
       title: "Title",
@@ -43,6 +51,18 @@ export default {
       title: "Sketch",
       type: "image",
       validation: (Rule) => [Rule.required().error("Field cannot be empty")],
+      fields: [
+        {
+          title: "Alt Text",
+          name: "alt",
+          type: "string",
+          description:
+            "Image description for accessibility. This will be read by screen readers to describe the contents of the image.",
+          options: {
+            isHighlighted: true,
+          },
+        },
+      ],
     },
     {
       name: "seo",
