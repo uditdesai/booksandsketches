@@ -1,5 +1,13 @@
 .Header {
   &__svg {
-    left: calc((100% - 35rem) / 2);
+    left: calc((100% - 14rem) / 2);
+
+    @media (min-width: 600px) {
+      left: calc((100% - 24rem) / 2);
+    }
+
+    @media (min-width: 900px) {
+      left: calc((100% - 35rem) / 2);
+    }
   }
 }

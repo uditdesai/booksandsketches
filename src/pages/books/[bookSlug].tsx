@@ -6,8 +6,35 @@ interface BookProps {
   book: any;
 }
 
-const BookPage: React.FC<BookProps> = (props) => {
-  return <div>{props.book.title}</div>;
+const BookPage: React.FC<BookProps> = ({ book }) => {
+  return (
+    <main className="BookPage w-100 min-h-screen px-4 md:px-8 pt-48 pb-8 bg-white auto-rows-min grid">
+      <div></div>
+      <div className="BookPage__infoWrapper w-full grid gap-x-24 gap-y-8">
+        <h1 className="justify-self-end">Title</h1>
+        <p>{book.title}</p>
+
+        <h2 className="justify-self-end">Author</h2>
+        <p>{book.author}</p>
+
+        <h2 className="justify-self-end">Rating</h2>
+        <p>{book.rating}/10</p>
+
+        <h2 className="justify-self-end">Type</h2>
+        <p>{book.isFiction ? "Fiction" : "Non-fiction"}</p>
+
+        <h2 className="justify-self-end">Thoughts</h2>
+        <p className="max-w-xl">{book.thoughts}</p>
+
+        {!!book.sketchIdea ? (
+          <>
+            <h2 className="justify-self-end">Sketch idea</h2>
+            <p className="max-w-xl">{book.sketchIdea}</p>
+          </>
+        ) : null}
+      </div>
+    </main>
+  );
 };
 
 export async function getStaticPaths() {

@@ -1,0 +1,7 @@
+.BookPage {
+  grid-template-columns: 1fr calc(50% + 6rem + 6rem);
+
+  &__infoWrapper {
+    grid-template-columns: fit-content(10rem) 1fr;
+  }
+}
