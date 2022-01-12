@@ -33,3 +33,7 @@ export const booksQuery = groq`
   slug,
   }
 `;
+
+export const infoQuery = groq`
+*[_type == 'info'][0]{...}
+`
