@@ -1,5 +1,5 @@
 // Util function to convert px values into rem for better dev-design collaboration
-const rem = (px) => `${px / 16}rem`;
+const rem = (px) => `${px / 16}rem`
 
 module.exports = {
   content: [
@@ -21,6 +21,7 @@ module.exports = {
       "sans-serif": ["Inter", "sans-serif"],
     },
     fontSize: {
+      12: rem(12),
       14: rem(14),
       16: rem(16),
       18: rem(18),
@@ -36,7 +37,10 @@ module.exports = {
       inset: {
         "29.5%": "29.5%",
       },
+      aspectRatio: {
+        "240/340": "240 / 340",
+      },
     },
   },
   plugins: [],
-};
+}

@@ -1,5 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { validateSlug } from "../utils/validateSlug";
+import { validateSlug } from "../utils/validateSlug"
 
 export default {
   name: "book",
@@ -65,6 +65,11 @@ export default {
       ],
     },
     {
+      title: "Book color",
+      name: "color",
+      type: "colorPicker",
+    },
+    {
       name: "seo",
       title: "SEO",
       type: "seoStandard",
@@ -76,12 +81,12 @@ export default {
       author: "author",
     },
     prepare(selection) {
-      const { title, author } = selection;
+      const { title, author } = selection
 
       return {
         title,
         subtitle: author,
-      };
+      }
     },
   },
-};
+}

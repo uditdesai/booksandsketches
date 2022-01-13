@@ -6,4 +6,7 @@ module.exports = {
     SANITY_PROJECT_ID: "87m4o7al",
     SANITY_DATASET: "production",
   },
-};
+  images: {
+    domains: ["cdn.sanity.io"],
+  },
+}
