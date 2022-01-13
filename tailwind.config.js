@@ -31,8 +31,13 @@ module.exports = {
       48: rem(48),
     },
     extend: {
+      maxWidth: {
+        xxs: "18rem",
+        xxxs: "15rem",
+      },
       width: {
         140: "35rem",
+        "fit-content": "fit-content",
       },
       inset: {
         "29.5%": "29.5%",

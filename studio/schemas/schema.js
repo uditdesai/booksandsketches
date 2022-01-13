@@ -1,12 +1,13 @@
 // schemas/schema.js
-import createSchema from "part:@sanity/base/schema-creator";
-import schemaTypes from "all:part:@sanity/base/schema-type";
+import createSchema from "part:@sanity/base/schema-creator"
+import schemaTypes from "all:part:@sanity/base/schema-type"
 
 // Import both schemas
-import info from "./info";
-import settings from "./settings";
-import book from "./book";
-import seoStandard from "./seoStandard";
+import info from "./info"
+import settings from "./settings"
+import book from "./book"
+import seoStandard from "./seoStandard"
+import genre from "./genre"
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -17,8 +18,9 @@ export default createSchema({
   types: schemaTypes.concat([
     /* Your types here! */
     seoStandard,
+    genre,
     settings,
     info,
     book,
   ]),
-});
+})

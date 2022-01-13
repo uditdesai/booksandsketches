@@ -25,6 +25,12 @@ export default {
       validation: (Rule) => [Rule.required().error("Field cannot be empty")],
     },
     {
+      title: "Genre",
+      name: "bookGenre",
+      type: "array",
+      of: [{ type: "genre" }],
+    },
+    {
       name: "rating",
       title: "Rating (out of 10)",
       type: "number",

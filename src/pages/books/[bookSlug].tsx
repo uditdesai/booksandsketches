@@ -1,6 +1,7 @@
 import React from "react"
 import { Book } from "../../components/Book"
 import { Rating } from "../../components/Rating"
+import { Tag } from "../../components/Tag"
 import { Sanity } from "../../lib/config"
 import { bookQuery, bookSlugsQuery } from "../../lib/queries"
 
@@ -10,17 +11,19 @@ interface BookProps {
 
 const BookPage: React.FC<BookProps> = ({ book }) => {
   return (
-    <main className="w-100 min-h-screen px-4 md:px-8 pt-48 pb-8 bg-white flex justify-center">
-      <div className="w-80 mr-24">
+    <main className="w-100 min-h-screen px-4 md:px-8 pb-8 pt-24 xs:pt-36 md:pt-48 bg-white flex items-center sm:items-start flex-col sm:flex-row sm:justify-center">
+      <div className="max-w-sm sm:max-w-xxxs md:max-w-xxs w-full mb-12 sm:mr-12 sm:mb-0 md:mr-20">
         <Book book={book} showContent={false} />
       </div>
       <div className="w-full max-w-xl flex flex-col">
         <h1 className="text-24 mb-1">{book.title}</h1>
-        <div className="w-full flex">
-          <p className="text-16 mr-12">{book.author}</p>
-          <p className="text-16 mr-12">
-            {book.isFiction ? "Fiction" : "Non-fiction"}
-          </p>
+        <p className="text-16">{book.author}</p>
+
+        <div className="mt-2 grid grid-flow-col auto-cols-min gap-x-2">
+          <Tag tag={book.isFiction ? "Fiction" : "Non-fiction"} type="type" />
+          {book.bookGenre.map((genre: string) => {
+            return <Tag tag={genre} type="genre" key={genre} />
+          })}
         </div>
 
         <p className="mt-4 text-14 mb-1">Rating</p>

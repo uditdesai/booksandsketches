@@ -4,6 +4,24 @@
     perspective-origin: 100% 50%;
   }
 
+  &__linkWrapper {
+    &:focus .Book__frontCover {
+      transform: rotateY(-25deg);
+    }
+
+    &:focus .Book__page--1 {
+      transform: rotateY(-20deg);
+    }
+
+    &:focus .Book__page--2 {
+      transform: rotateY(-15deg);
+    }
+
+    &:focus .Book__page--3 {
+      transform: rotateY(-10deg);
+    }
+  }
+
   &__frontCover {
     z-index: 5;
     will-change: transform;

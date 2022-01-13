@@ -1,4 +1,11 @@
 .Header {
+  &__svgLink {
+    &:focus .Header__svg {
+      outline: 1px dotted #212121;
+      outline: 5px auto -webkit-focus-ring-color;
+    }
+  }
+
   &__svg {
     left: calc((100% - 14rem) / 2);
 

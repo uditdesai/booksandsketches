@@ -17,6 +17,7 @@ export const bookQuery = (slug: string) => groq`
   isFiction,
   color,
   sketch,
+  bookGenre[],
   seo,
   slug,
   }
@@ -33,6 +34,7 @@ export const booksQuery = groq`
   isFiction,
   color,
   sketch,
+  bookGenre[],
   seo,
   slug,
   }
