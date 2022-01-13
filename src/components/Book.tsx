@@ -12,7 +12,7 @@ export const Book: React.FC<BookProps> = ({ book, showContent = true }) => {
     <div>
       <Link href={`/books/${book.slug.current}`}>
         <a className="Book__linkWrapper">
-          <div className="Book__wrapper w-full aspect-240/340 relative">
+          <div className="Book__wrapper w-full block aspect-240/340 relative">
             <div
               style={{ background: book.color }}
               className="Book__frontCover w-full h-full relative drop-shadow-lg grid place-items-center"
