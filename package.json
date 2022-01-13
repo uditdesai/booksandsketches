@@ -2,9 +2,10 @@
   "name": "booksandsketches",
   "private": true,
   "scripts": {
-    "dev": "concurrently \"next dev\" \"cd studio && sanity start\"",
-    "build": "echo 'Building Sanity to public/studio' && cd studio && sanity build ../public/studio -y && cd .. && next build",
-    "start": "vercel dev"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@sanity/cli": "^2.24.0",
@@ -21,7 +22,6 @@
     "@types/node": "17.0.8",
     "@types/react": "17.0.38",
     "autoprefixer": "^10.4.2",
-    "concurrently": "^7.0.0",
     "eslint": "8.6.0",
     "eslint-config-next": "12.0.7",
     "postcss": "^8.4.5",
