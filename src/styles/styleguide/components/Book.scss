@@ -5,6 +5,7 @@
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     will-change: transform;
+    padding-bottom: 141.6%;
   }
 
   &__linkWrapper {
@@ -38,8 +39,7 @@
     overflow: hidden;
 
     &:hover {
-      transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
-        rotateY(-25deg) rotateZ(0deg) skew(0deg, 0deg);
+      transform: rotateY(-25deg);
     }
 
     &:hover ~ .Book__page--1 {

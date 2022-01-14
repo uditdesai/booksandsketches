@@ -13,7 +13,7 @@ export const Header: React.FC<HeaderProps> = () => {
         <a className="Header__svgLink">
           <Svg
             svg="logo"
-            className="Header__svg absolute -top-3 w-56 xs:-top-5 xs:w-96 md:-top-7 md:w-140"
+            className="Header__svg absolute -top-2 w-48 xs:-top-5 xs:w-96 md:-top-7 md:w-140"
             ariaLabel="Books and Sketches logo"
           />
         </a>
