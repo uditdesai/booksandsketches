@@ -6,52 +6,77 @@
     transform-style: preserve-3d;
     will-change: transform;
     padding-bottom: 141.6%;
+
+    &--fullFlip {
+      perspective: 1000px;
+      perspective-origin: 50% 50%;
+    }
+
+    &--animateOnHover {
+      &:hover .Book__frontCover {
+        transform: rotateY(-25deg);
+      }
+
+      &:hover .Book__page--1 {
+        transform: rotateY(-20deg);
+      }
+
+      &:hover .Book__page--2 {
+        transform: rotateY(-15deg);
+      }
+
+      &:hover .Book__page--3 {
+        transform: rotateY(-10deg);
+      }
+
+      &:hover .Book__page--4 {
+        transform: rotateY(-5deg);
+      }
+    }
   }
 
   &__linkWrapper {
-    &:focus .Book__frontCover {
-      transform: rotateY(-25deg);
-    }
+    &--animateOnHover {
+      &:focus-visible .Book__frontCover {
+        transform: rotateY(-25deg);
+      }
 
-    &:focus .Book__page--1 {
-      transform: rotateY(-20deg);
-    }
+      &:focus-visible .Book__page--1 {
+        transform: rotateY(-20deg);
+      }
 
-    &:focus .Book__page--2 {
-      transform: rotateY(-15deg);
-    }
+      &:focus-visible .Book__page--2 {
+        transform: rotateY(-15deg);
+      }
 
-    &:focus .Book__page--3 {
-      transform: rotateY(-10deg);
+      &:focus-visible .Book__page--3 {
+        transform: rotateY(-10deg);
+      }
+
+      &:focus-visible .Book__page--4 {
+        transform: rotateY(-5deg);
+      }
     }
   }
 
   &__frontCover {
-    z-index: 5;
+    z-index: 6;
     transform: none;
     transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
       rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
     transform-origin: 0% 50%;
     border-radius: 2px;
     transition: transform 0.65s ease;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
     overflow: hidden;
 
-    &:hover {
-      transform: rotateY(-25deg);
+    &--slow {
+      transition: transform 1s ease;
     }
 
-    &:hover ~ .Book__page--1 {
-      transform: rotateY(-20deg);
-    }
-
-    &:hover ~ .Book__page--2 {
-      transform: rotateY(-15deg);
-    }
-
-    &:hover ~ .Book__page--3 {
-      transform: rotateY(-10deg);
+    &--flipped {
+      transform: rotateY(-179deg);
     }
   }
 
@@ -64,31 +89,73 @@
     transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
       rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
     transform-origin: 0% 50%;
-    display: block;
     transition: transform 0.65s ease;
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    overflow: hidden;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+    &--slow {
+      width: 96%;
+      transition: transform 1s ease;
+    }
 
     &--1 {
-      z-index: 4;
+      z-index: 5;
+
+      &--flipped {
+        transform: rotateY(-178.5deg);
+      }
     }
 
     &--2 {
-      z-index: 3;
+      z-index: 4;
+
+      &--flipped {
+        transform: rotateY(-178deg);
+      }
     }
 
     &--3 {
-      z-index: 2;
+      z-index: 3;
+
+      &--flipped {
+        transform: rotateY(-177.5deg);
+      }
     }
 
     &--4 {
+      z-index: 2;
+
+      &--flipped {
+        transform: rotateY(-177deg);
+      }
+    }
+
+    &--5 {
       z-index: 1;
+
+      &--flipped {
+        transform: rotateY(-176.5deg);
+      }
     }
   }
 
   &__backCover {
     z-index: 0;
     border-radius: 2px;
+  }
+
+  &__face {
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    @apply w-full h-full absolute bg-stone-50 drop-shadow-sm bg-gradient-to-r from-stone-300 to-stone-50;
+    @apply grid grid-cols-1 grid-rows-[fit-content(2rem)_1fr_fit-content(2rem)] justify-items-center p-2;
+
+    &--back {
+      transform: rotateY(180deg);
+    }
+
+    & span {
+      @apply text-12;
+    }
   }
 }
