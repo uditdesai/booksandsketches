@@ -150,14 +150,19 @@
   &__face {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    @apply w-full h-full absolute drop-shadow-sm bg-gradient-to-r from-stone-300 to-stone-50;
+    @apply w-full h-full absolute drop-shadow-sm;
     @apply grid grid-cols-1 grid-rows-[fit-content(2rem)_1fr_fit-content(2rem)] justify-items-center p-2;
 
     &--cover {
       @apply grid-rows-1 place-items-center;
     }
 
+    &--front {
+      @apply bg-gradient-to-r from-stone-300 to-stone-50;
+    }
+
     &--back {
+      @apply bg-gradient-to-l from-stone-300 to-stone-50;
       transform: rotateY(180deg);
     }
 

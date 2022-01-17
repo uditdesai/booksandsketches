@@ -2,6 +2,7 @@ import React from "react"
 import { Book } from "../../components/Book"
 import { Rating } from "../../components/Rating"
 import { Tag } from "../../components/Tag"
+import { Button } from "../../components/Button"
 import { Sanity } from "../../lib/config"
 import { bookQuery, bookSlugsQuery } from "../../lib/queries"
 
@@ -11,8 +12,8 @@ interface BookProps {
 
 const BookPage: React.FC<BookProps> = ({ book }) => {
   return (
-    <main className="w-100 min-h-screen px-4 md:px-8 pb-8 pt-24 xs:pt-36 md:pt-48 bg-white flex items-center flex-col">
-      <div className="w-[40rem]">
+    <main className="w-100 min-h-screen px-4 md:px-8 pb-16 pt-24 xs:pt-36 md:pt-48 bg-white flex items-center flex-col">
+      <div className="w-1/2">
         <Book
           book={book}
           showContent={false}
@@ -22,7 +23,10 @@ const BookPage: React.FC<BookProps> = ({ book }) => {
         />
       </div>
 
-      <div className="mt-72">
+      <div
+        className="pt-40 mb-40 w-full flex justify-center"
+        id={`${book.slug.current}-compact`}
+      >
         <div className="w-56 max-w-xs sm:max-w-[15rem] md:max-w-[18rem] xs:w-full mb-12 sm:mr-12 sm:mb-0 md:mr-20">
           <Book
             book={book}
@@ -56,6 +60,15 @@ const BookPage: React.FC<BookProps> = ({ book }) => {
             </>
           ) : null}
         </div>
+      </div>
+
+      <div className="w-[fit-content] flex flex-col items-center">
+        <p className="text-16 mb-5 text-center">
+          Thanks for reading
+          <br />
+          my thoughts
+        </p>
+        <Button style="filled" to="/" label="Back to home" color={book.color} />
       </div>
     </main>
   )

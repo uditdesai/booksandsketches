@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
+import { Button } from "./Button"
 import { urlFor } from "../lib/config"
+import { Svg } from "./Svg/Svg"
 
 interface BookProps {
   book: any
@@ -34,7 +36,11 @@ export const Book: React.FC<BookProps> = ({
         animateOnHover && "Book__wrapper--animateOnHover"
       } ${
         fullFlipFunction && "Book__wrapper--fullFlip"
-      } aspect-[240/340] w-full block relative z-[1]`}
+      } aspect-[240/340] w-full block relative z-[1] ${
+        fullFlipFunction && fullFlipPos >= 5
+          ? "pointer-events-none"
+          : "pointer-events-auto"
+      }`}
     >
       <div
         style={{ background: !fullFlipFunction ? book.color : "none" }}
@@ -130,7 +136,7 @@ export const Book: React.FC<BookProps> = ({
       >
         {fullFlipFunction ? (
           <>
-            <div className="Book__face Book__face--frontbrightness-[0.96]">
+            <div className="Book__face Book__face--front brightness-[0.96]">
               <span>{book.title}</span>
               <div></div>
               <span>5</span>
@@ -201,13 +207,41 @@ export const Book: React.FC<BookProps> = ({
       ) : fullFlipFunction ? (
         <div className="w-full h-full grid grid-cols-2">
           <div className="w-full h-full flex flex-col items-center justify-center">
-            <h1>{book.title}</h1>
-            <h2>{book.author}</h2>
+            <h1 className="text-24">{book.title}</h1>
+            <h2 className="text-16 mb-8">{book.author}</h2>
+            <Button
+              label="Open the book"
+              onClick={nextPage}
+              style="filled"
+              color={book.color}
+            />
+            <a
+              className="text-14 mt-8 text-center"
+              href={`#${book.slug.current}-compact`}
+            >
+              Or scroll down for a<br />
+              more compact view
+              <br />
+              of my thoughts
+            </a>
           </div>
           <div className="w-full relative">
             {BookElement}
             <div className="w-full h-full absolute top-0 left-0 z-0 flex flex-col items-center justify-center">
-              <p>Thanks for reading my thoughts</p>
+              <p className="text-16 mb-8 text-center">
+                Thanks for reading
+                <br />
+                my thoughts
+              </p>
+              <Button
+                label="Go back"
+                onClick={prevPage}
+                style="filled"
+                color={book.color}
+              />
+              <Link href="/">
+                <a className="text-14 mt-8 text-center">View all books</a>
+              </Link>
             </div>
           </div>
         </div>
@@ -225,11 +259,44 @@ export const Book: React.FC<BookProps> = ({
       )}
 
       {fullFlipFunction && (
-        <div className="mt-6 flex justify-self-center">
-          <button className="mr-6" onClick={prevPage}>
-            Prev
-          </button>
-          <button onClick={nextPage}>Next</button>
+        <div
+          className={`mt-6 flex justify-self-center transition-opacity ease-in-out duration-500 ${
+            fullFlipPos < 1 || fullFlipPos > 4
+              ? "opacity-0 pointer-events-none"
+              : "opacity-100 pointer-events-auto"
+          }`}
+        >
+          <Button
+            label="Previous Page"
+            style="filled"
+            color={book.color}
+            onClick={prevPage}
+            textSize="14"
+            classname="mr-8"
+            leftIcon={
+              <Svg
+                svg="leftArrow"
+                size="custom"
+                ariaLabel="Previous page"
+                className="z-[1] w-3 mt-0.5 text-white"
+              />
+            }
+          />
+          <Button
+            label="Next Page"
+            style="filled"
+            color={book.color}
+            onClick={nextPage}
+            textSize="14"
+            rightIcon={
+              <Svg
+                svg="rightArrow"
+                size="custom"
+                ariaLabel="Previous page"
+                className="z-[1] w-3 mt-0.5 text-white"
+              />
+            }
+          />
         </div>
       )}
     </div>
