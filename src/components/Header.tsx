@@ -5,7 +5,7 @@ interface HeaderProps {}
 
 export const Header: React.FC<HeaderProps> = () => {
   return (
-    <nav className="w-full p-4 md:p-8 fixed top-0 left-0 flex items-center justify-between z-50">
+    <nav className="w-full p-4 md:p-8 fixed top-0 left-0 flex items-center justify-between z-50 [transform:translateZ(1000px)]">
       <Link href="/">
         <a className="font-sans-serif text-16 text-black">Home</a>
       </Link>

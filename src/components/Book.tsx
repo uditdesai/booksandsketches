@@ -41,7 +41,7 @@ export const Book: React.FC<BookProps> = ({
         className={`Book__frontCover ${
           fullFlipFunction
             ? "Book__frontCover--slow"
-            : "drop-shadow-lg grid place-items-center overflow-hidden"
+            : "drop-shadow-lg grid place-items-center"
         } ${
           fullFlipPos >= 1 && "Book__frontCover--flipped"
         } w-full h-full absolute top-0 left-0`}

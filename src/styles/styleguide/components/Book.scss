@@ -86,7 +86,7 @@
     border-radius: 2px;
     transform: none;
     transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
-      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+      rotateY(1deg) rotateZ(0deg) skew(0deg, 0deg);
     transform-origin: 0% 50%;
     transition: transform 0.65s ease;
     -webkit-transform-style: preserve-3d;
@@ -135,7 +135,7 @@
     border-radius: 2px;
     transform: none;
     transform: translate3d(0px, 0px, 0px) scale3d(1, 1, 1) rotateX(0deg)
-      rotateY(0deg) rotateZ(0deg) skew(0deg, 0deg);
+      rotateY(2deg) rotateZ(0deg) skew(0deg, 0deg);
     transform-origin: 0% 50%;
     transition: transform 0.65s ease;
     -webkit-transform-style: preserve-3d;
@@ -150,7 +150,7 @@
   &__face {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
-    @apply w-full h-full absolute bg-stone-50 drop-shadow-sm bg-gradient-to-r from-stone-300 to-stone-50;
+    @apply w-full h-full absolute drop-shadow-sm bg-gradient-to-r from-stone-300 to-stone-50;
     @apply grid grid-cols-1 grid-rows-[fit-content(2rem)_1fr_fit-content(2rem)] justify-items-center p-2;
 
     &--cover {
