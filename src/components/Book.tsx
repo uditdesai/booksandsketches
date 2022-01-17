@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { urlFor } from "../lib/config"
@@ -21,7 +21,7 @@ export const Book: React.FC<BookProps> = ({
   const [fullFlipPos, setFullFlipPos] = useState(0)
 
   const nextPage = () => {
-    if (fullFlipPos <= 5) setFullFlipPos((prev) => prev + 1)
+    if (fullFlipPos <= 4) setFullFlipPos((prev) => prev + 1)
   }
 
   const prevPage = () => {
@@ -34,22 +34,44 @@ export const Book: React.FC<BookProps> = ({
         animateOnHover && "Book__wrapper--animateOnHover"
       } ${
         fullFlipFunction && "Book__wrapper--fullFlip"
-      } aspect-[240/340] w-full block relative`}
+      } aspect-[240/340] w-full block relative z-[1]`}
     >
       <div
-        style={{ background: book.color }}
+        style={{ background: !fullFlipFunction ? book.color : "none" }}
         className={`Book__frontCover ${
-          fullFlipFunction && "Book__frontCover--slow"
+          fullFlipFunction
+            ? "Book__frontCover--slow"
+            : "drop-shadow-lg grid place-items-center overflow-hidden"
         } ${
           fullFlipPos >= 1 && "Book__frontCover--flipped"
-        } w-full h-full absolute top-0 left-0 drop-shadow-lg grid place-items-center`}
+        } w-full h-full absolute top-0 left-0`}
       >
-        <Image
-          src={urlFor(book.sketch).url()}
-          alt={book.sketch.alt}
-          layout="fill"
-          className="pointer-events-none"
-        />
+        {fullFlipFunction ? (
+          <>
+            <div
+              className="Book__face Book__face--front Book__face--cover"
+              style={{ background: book.color }}
+            >
+              <Image
+                src={urlFor(book.sketch).url()}
+                alt={book.sketch.alt}
+                layout="fill"
+                className="pointer-events-none"
+              />
+            </div>
+            <div
+              className="Book__face Book__face--back Book__face--cover"
+              style={{ background: book.color }}
+            ></div>
+          </>
+        ) : (
+          <Image
+            src={urlFor(book.sketch).url()}
+            alt={book.sketch.alt}
+            layout="fill"
+            className="pointer-events-none"
+          />
+        )}
       </div>
       <div
         className={`Book__page ${
@@ -58,16 +80,20 @@ export const Book: React.FC<BookProps> = ({
           fullFlipPos >= 2 && "Book__page--1--flipped"
         } absolute left-0`}
       >
-        <div className="Book__face Book__face--front">
-          <span>{book.title}</span>
-          <div></div>
-          <span>1</span>
-        </div>
-        <div className="Book__face Book__face--back">
-          <span>{book.author}</span>
-          <div></div>
-          <span>2</span>
-        </div>
+        {fullFlipFunction ? (
+          <>
+            <div className="Book__face Book__face--front">
+              <span>{book.title}</span>
+              <div></div>
+              <span>1</span>
+            </div>
+            <div className="Book__face Book__face--back">
+              <span>{book.author}</span>
+              <div></div>
+              <span>2</span>
+            </div>
+          </>
+        ) : null}
       </div>
       <div
         className={`Book__page ${
@@ -78,16 +104,20 @@ export const Book: React.FC<BookProps> = ({
           fullFlipPos >= 3 && "Book__page--2--flipped"
         } absolute left-0`}
       >
-        <div className="Book__face Book__face--front brightness-[0.99]">
-          <span>{book.title}</span>
-          <div></div>
-          <span>3</span>
-        </div>
-        <div className="Book__face Book__face--back brightness-[0.99]">
-          <span>{book.author}</span>
-          <div></div>
-          <span>4</span>
-        </div>
+        {fullFlipFunction ? (
+          <>
+            <div className="Book__face Book__face--front brightness-[0.98]">
+              <span>{book.title}</span>
+              <div></div>
+              <span>3</span>
+            </div>
+            <div className="Book__face Book__face--back brightness-[0.98]">
+              <span>{book.author}</span>
+              <div></div>
+              <span>4</span>
+            </div>
+          </>
+        ) : null}
       </div>
       <div
         className={`Book__page ${
@@ -98,66 +128,66 @@ export const Book: React.FC<BookProps> = ({
           fullFlipPos >= 4 && "Book__page--3--flipped"
         } absolute left-0`}
       >
-        <div className="Book__face Book__face--frontbrightness-[0.98]">
-          <span>{book.title}</span>
-          <div></div>
-          <span>5</span>
-        </div>
-        <div className="Book__face Book__face--back brightness-[0.98]">
-          <span>{book.author}</span>
-          <div></div>
-          <span>6</span>
-        </div>
+        {fullFlipFunction ? (
+          <>
+            <div className="Book__face Book__face--frontbrightness-[0.96]">
+              <span>{book.title}</span>
+              <div></div>
+              <span>5</span>
+            </div>
+            <div className="Book__face Book__face--back brightness-[0.96]">
+              <span>{book.author}</span>
+              <div></div>
+              <span>6</span>
+            </div>
+          </>
+        ) : null}
       </div>
       <div
         className={`Book__page ${
           fullFlipFunction
-            ? "Book__page--slow"
+            ? "hidden"
             : "drop-shadow-sm bg-stone-50 brightness-[0.91]"
-        } Book__page--4 ${
-          fullFlipPos >= 5 && "Book__page--4--flipped"
-        } absolute left-0`}
-      >
-        <div className="Book__face Book__face--front brightness-[0.97]">
-          <span>{book.title}</span>
-          <div></div>
-          <span>7</span>
-        </div>
-        <div className="Book__face Book__face--back brightness-[0.97]">
-          <span>{book.author}</span>
-          <div></div>
-          <span>8</span>
-        </div>
-      </div>
+        } Book__page--4 absolute left-0`}
+      ></div>
       <div
         className={`Book__page ${
           fullFlipFunction
-            ? "Book__page--slow"
+            ? "hidden"
             : "drop-shadow-sm bg-stone-50 brightness-[0.88]"
-        } Book__page--5 ${
-          fullFlipPos >= 6 && "Book__page--5--flipped"
-        } absolute left-0`}
-      >
-        <div className="Book__face Book__face--frontbrightness-[0.96]">
-          <span>{book.title}</span>
-          <div></div>
-          <span>9</span>
-        </div>
-        <div className="Book__face Book__face--back brightness-[0.96]">
-          <span>{book.author}</span>
-          <div></div>
-          <span>10</span>
-        </div>
-      </div>
-      <div
-        style={{ background: book.color }}
-        className="Book__backCover w-full h-full absolute top-0 left-0"
+        } Book__page--5 absolute left-0`}
       ></div>
+      <div
+        style={{ background: !fullFlipFunction ? book.color : "none" }}
+        className={`Book__backCover w-full h-full absolute top-0 left-0 ${
+          fullFlipPos >= 5 && "Book__backCover--flipped"
+        }`}
+      >
+        {fullFlipFunction ? (
+          <>
+            <div
+              className="Book__face Book__face--front Book__face--cover"
+              style={{ background: book.color }}
+            ></div>
+            <div
+              className="Book__face Book__face--back Book__face--cover"
+              style={{ background: book.color }}
+            >
+              <Image
+                src={urlFor(book.sketch).url()}
+                alt={book.sketch.alt}
+                layout="fill"
+                className="pointer-events-none"
+              />
+            </div>
+          </>
+        ) : null}
+      </div>
     </div>
   )
 
   return (
-    <div>
+    <div className="w-full h-full grid">
       {isLink ? (
         <Link href={`/books/${book.slug.current}`}>
           <a
@@ -168,6 +198,19 @@ export const Book: React.FC<BookProps> = ({
             {BookElement}
           </a>
         </Link>
+      ) : fullFlipFunction ? (
+        <div className="w-full h-full grid grid-cols-2">
+          <div className="w-full h-full flex flex-col items-center justify-center">
+            <h1>{book.title}</h1>
+            <h2>{book.author}</h2>
+          </div>
+          <div className="w-full relative">
+            {BookElement}
+            <div className="w-full h-full absolute top-0 left-0 z-0 flex flex-col items-center justify-center">
+              <p>Thanks for reading my thoughts</p>
+            </div>
+          </div>
+        </div>
       ) : (
         <>{BookElement}</>
       )}
@@ -182,7 +225,7 @@ export const Book: React.FC<BookProps> = ({
       )}
 
       {fullFlipFunction && (
-        <div className="mt-6 flex">
+        <div className="mt-6 flex justify-self-center">
           <button className="mr-6" onClick={prevPage}>
             Prev
           </button>

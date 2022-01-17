@@ -11,36 +11,8 @@ interface BookProps {
 
 const BookPage: React.FC<BookProps> = ({ book }) => {
   return (
-    <main className="w-100 min-h-screen px-4 md:px-8 pb-8 pt-24 xs:pt-36 md:pt-48 bg-white flex items-center sm:items-start flex-col sm:flex-row sm:justify-center">
-      {/* <div className="w-56 max-w-xs sm:max-w-[15rem] md:max-w-[18rem] xs:w-full mb-12 sm:mr-12 sm:mb-0 md:mr-20">
-        <Book book={book} showContent={false} isLink={false} />
-      </div>
-      <div className="w-full max-w-xl flex flex-col">
-        <h1 className="text-24 mb-1">{book.title}</h1>
-        <p className="text-16">{book.author}</p>
-
-        <div className="mt-2 grid grid-flow-col auto-cols-min gap-x-2">
-          <Tag tag={book.isFiction ? "Fiction" : "Non-fiction"} type="type" />
-          {book.bookGenre.map((genre: string) => {
-            return <Tag tag={genre} type="genre" key={genre} />
-          })}
-        </div>
-
-        <p className="mt-4 text-14 mb-1">Rating</p>
-        <Rating rating={book.rating} color={book.color} />
-
-        <p className="mt-4 text-14 mb-1">Thoughts</p>
-        <p className="text-16">{book.thoughts}</p>
-
-        {!!book.sketchIdea ? (
-          <>
-            <p className="mt-4 text-14 mb-1">Sketch Idea</p>
-            <p className="text-16">{book.sketchIdea}</p>
-          </>
-        ) : null}
-      </div> */}
-
-      <div className="w-56 max-w-xs sm:max-w-xxxs md:max-w-xxs xs:w-full mb-12 sm:mr-12 sm:mb-0 md:mr-20">
+    <main className="w-100 min-h-screen px-4 md:px-8 pb-8 pt-24 xs:pt-36 md:pt-48 bg-white flex items-center flex-col">
+      <div className="w-[40rem]">
         <Book
           book={book}
           showContent={false}
@@ -48,6 +20,42 @@ const BookPage: React.FC<BookProps> = ({ book }) => {
           animateOnHover={false}
           fullFlipFunction={true}
         />
+      </div>
+
+      <div className="mt-72">
+        <div className="w-56 max-w-xs sm:max-w-[15rem] md:max-w-[18rem] xs:w-full mb-12 sm:mr-12 sm:mb-0 md:mr-20">
+          <Book
+            book={book}
+            showContent={false}
+            isLink={false}
+            fullFlipFunction={false}
+            animateOnHover={false}
+          />
+        </div>
+        <div className="w-full max-w-xl flex flex-col">
+          <h1 className="text-24 mb-1">{book.title}</h1>
+          <p className="text-16">{book.author}</p>
+
+          <div className="mt-2 grid grid-flow-col auto-cols-min gap-x-2">
+            <Tag tag={book.isFiction ? "Fiction" : "Non-fiction"} type="type" />
+            {book.bookGenre.map((genre: string) => {
+              return <Tag tag={genre} type="genre" key={genre} />
+            })}
+          </div>
+
+          <p className="mt-4 text-14 mb-1">Rating</p>
+          <Rating rating={book.rating} color={book.color} />
+
+          <p className="mt-4 text-14 mb-1">Thoughts</p>
+          <p className="text-16">{book.thoughts}</p>
+
+          {!!book.sketchIdea ? (
+            <>
+              <p className="mt-4 text-14 mb-1">Sketch Idea</p>
+              <p className="text-16">{book.sketchIdea}</p>
+            </>
+          ) : null}
+        </div>
       </div>
     </main>
   )
