@@ -266,37 +266,40 @@ export const Book: React.FC<BookProps> = ({
               : "opacity-100 pointer-events-auto"
           }`}
         >
-          <Button
-            label="Previous Page"
-            style="filled"
-            color={book.color}
-            onClick={prevPage}
-            textSize="14"
-            classname="mr-8"
-            leftIcon={
-              <Svg
-                svg="leftArrow"
-                size="custom"
-                ariaLabel="Previous page"
-                className="z-[1] w-3 mt-0.5 text-white"
-              />
-            }
-          />
-          <Button
-            label="Next Page"
-            style="filled"
-            color={book.color}
-            onClick={nextPage}
-            textSize="14"
-            rightIcon={
-              <Svg
-                svg="rightArrow"
-                size="custom"
-                ariaLabel="Previous page"
-                className="z-[1] w-3 mt-0.5 text-white"
-              />
-            }
-          />
+          <div className="w-[10rem] flex justify-end mr-6">
+            <Button
+              label={fullFlipPos > 1 ? "Previous page" : "Close book"}
+              style="filled"
+              color={book.color}
+              onClick={prevPage}
+              textSize="14"
+              leftIcon={
+                <Svg
+                  svg="leftArrow"
+                  size="custom"
+                  ariaLabel="Previous page"
+                  className="z-[1] w-3 mt-0.5 text-white"
+                />
+              }
+            />
+          </div>
+          <div className="w-[10rem] flex justify-start">
+            <Button
+              label={fullFlipPos < 4 ? "Next page" : "Close book"}
+              style="filled"
+              color={book.color}
+              onClick={nextPage}
+              textSize="14"
+              rightIcon={
+                <Svg
+                  svg="rightArrow"
+                  size="custom"
+                  ariaLabel="Previous page"
+                  className="z-[1] w-3 mt-0.5 text-white"
+                />
+              }
+            />
+          </div>
         </div>
       )}
     </div>

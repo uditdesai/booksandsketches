@@ -5,6 +5,7 @@ import { Tag } from "../../components/Tag"
 import { Button } from "../../components/Button"
 import { Sanity } from "../../lib/config"
 import { bookQuery, bookSlugsQuery } from "../../lib/queries"
+import { Svg } from "../../components/Svg/Svg"
 
 interface BookProps {
   book: any
@@ -13,7 +14,7 @@ interface BookProps {
 const BookPage: React.FC<BookProps> = ({ book }) => {
   return (
     <main className="w-100 min-h-screen px-4 md:px-8 pb-16 pt-24 xs:pt-36 md:pt-48 bg-white flex items-center flex-col">
-      <div className="w-1/2">
+      <div className="BookPage__bookWrapper hidden xs:block">
         <Book
           book={book}
           showContent={false}
@@ -23,11 +24,17 @@ const BookPage: React.FC<BookProps> = ({ book }) => {
         />
       </div>
 
+      <div className="xs:hidden w-full mb-8">
+        <p className="text-16">
+          View this in a larger screen for a cooler experience :)
+        </p>
+      </div>
+
       <div
-        className="pt-40 mb-40 w-full flex justify-center"
+        className="xs:pt-40 sm:pt-56 mb-40 w-full flex flex-col xs:flex-row xs:justify-center"
         id={`${book.slug.current}-compact`}
       >
-        <div className="w-56 max-w-xs sm:max-w-[15rem] md:max-w-[18rem] xs:w-full mb-12 sm:mr-12 sm:mb-0 md:mr-20">
+        <div className="w-full xs:max-w-[10rem] sm:max-w-[15rem] md:max-w-[18rem] xs:mr-6 mb-12 sm:mr-12 sm:mb-0 md:mr-20">
           <Book
             book={book}
             showContent={false}
