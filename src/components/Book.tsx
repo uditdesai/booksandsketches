@@ -234,13 +234,15 @@ export const Book: React.FC<BookProps> = ({
                 my thoughts
               </p>
               <Button
-                label="Go back"
+                label="Open book again"
                 onClick={prevPage}
                 style="filled"
                 color={book.color}
               />
               <Link href="/">
-                <a className="text-14 mt-8 text-center">View all books</a>
+                <a className="text-14 mt-8 text-center underline">
+                  View all books
+                </a>
               </Link>
             </div>
           </div>
