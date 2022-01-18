@@ -62,35 +62,8 @@ const RightArrow = () => (
   </svg>
 )
 
-const Star = () => (
-  <svg
-    width="100%"
-    height="100%"
-    viewBox="0 0 173 180"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <g clipPath="url(#clip0_87_6)">
-      <path
-        d="M86 0L106.206 62.1885H171.595L118.694 100.623L138.901 162.812L86 124.377L33.0993 162.812L53.3056 100.623L0.404915 62.1885H65.7937L86 0Z"
-        fill="currentColor"
-      />
-      <path
-        d="M173.16 113.521L107.861 116.943L90.9373 180.104L67.504 119.058L2.2048 122.48L53.0215 81.3296L29.5882 20.2839L84.4279 55.8972L135.245 14.7467L118.321 77.9074L173.16 113.521Z"
-        fill="currentColor"
-      />
-    </g>
-    <defs>
-      <clipPath id="clip0_87_6">
-        <rect width="173" height="180" fill="white" />
-      </clipPath>
-    </defs>
-  </svg>
-)
-
 export const Svgs = {
   logo: Logo,
   leftArrow: LeftArrow,
   rightArrow: RightArrow,
-  star: Star,
 }

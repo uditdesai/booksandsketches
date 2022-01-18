@@ -45,12 +45,12 @@ export default {
     {
       name: "thoughts",
       title: "Thoughts",
-      type: "text",
+      type: "portableText",
     },
     {
       name: "sketchIdea",
       title: "Sketch idea",
-      type: "text",
+      type: "portableText",
     },
     {
       name: "sketch",

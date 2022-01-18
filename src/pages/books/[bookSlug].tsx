@@ -5,7 +5,7 @@ import { Tag } from "../../components/Tag"
 import { Button } from "../../components/Button"
 import { Sanity } from "../../lib/config"
 import { bookQuery, bookSlugsQuery } from "../../lib/queries"
-import { Svg } from "../../components/Svg/Svg"
+import BlockContent from "@sanity/block-content-to-react"
 
 interface BookProps {
   book: any
@@ -47,7 +47,7 @@ const BookPage: React.FC<BookProps> = ({ book }) => {
           <h1 className="text-24 mb-1">{book.title}</h1>
           <p className="text-16">{book.author}</p>
 
-          <div className="mt-2 grid grid-flow-col auto-cols-min gap-x-2">
+          <div className="mt-2 grid grid-flow-col auto-cols-max gap-x-2">
             <Tag tag={book.isFiction ? "Fiction" : "Non-fiction"} type="type" />
             {book.bookGenre.map((genre: string) => {
               return <Tag tag={genre} type="genre" key={genre} />
@@ -58,12 +58,16 @@ const BookPage: React.FC<BookProps> = ({ book }) => {
           <Rating rating={book.rating} color={book.color} />
 
           <p className="mt-4 text-14 mb-1">Thoughts</p>
-          <p className="text-16">{book.thoughts}</p>
+          <div className="text-16">
+            <BlockContent blocks={book.thoughts} />
+          </div>
 
           {!!book.sketchIdea ? (
             <>
               <p className="mt-4 text-14 mb-1">Sketch Idea</p>
-              <p className="text-16">{book.sketchIdea}</p>
+              <div className="text-16">
+                <BlockContent blocks={book.sketchIdea} />
+              </div>
             </>
           ) : null}
         </div>

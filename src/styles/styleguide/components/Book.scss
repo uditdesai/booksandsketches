@@ -69,6 +69,7 @@
     transition: transform 0.65s ease;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    -webkit-font-smoothing: antialiased;
 
     &--slow {
       transition: transform 1s ease;
@@ -91,6 +92,7 @@
     transition: transform 0.65s ease;
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
+    -webkit-font-smoothing: antialiased;
 
     &--slow {
       width: 96%;
@@ -141,6 +143,7 @@
     -webkit-transform-style: preserve-3d;
     transform-style: preserve-3d;
     transition: transform 1s ease;
+    -webkit-font-smoothing: antialiased;
 
     &--flipped {
       transform: rotateY(-177deg);
@@ -150,6 +153,7 @@
   &__face {
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
     @apply w-full h-full absolute drop-shadow-sm;
     @apply grid grid-cols-1 grid-rows-[fit-content(2rem)_1fr_fit-content(2rem)] justify-items-center p-2;
 

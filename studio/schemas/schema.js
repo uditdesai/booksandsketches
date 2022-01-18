@@ -8,6 +8,7 @@ import settings from "./settings"
 import book from "./book"
 import seoStandard from "./seoStandard"
 import genre from "./genre"
+import portableText from "./portableText"
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -19,6 +20,7 @@ export default createSchema({
     /* Your types here! */
     seoStandard,
     genre,
+    portableText,
     settings,
     info,
     book,
